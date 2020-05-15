@@ -20,10 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.geekbrains.menu.IFragmentList;
 import ru.geekbrains.menu.ListAdapter;
+import ru.geekbrains.menu.MainActivity;
 import ru.geekbrains.menu.R;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements IFragmentList {
 
     private ListAdapter adapter;
 
@@ -31,6 +33,7 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         iniList(root);
+        ((MainActivity)requireActivity()).setFragmentList(this);
         return root;
     }
 
@@ -83,5 +86,15 @@ public class HomeFragment extends Fragment {
                 return true;
         }
         return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public void addItem(String str) {
+        adapter.addItem(str);
+    }
+
+    @Override
+    public void clearItems() {
+        adapter.clearItems();
     }
 }
