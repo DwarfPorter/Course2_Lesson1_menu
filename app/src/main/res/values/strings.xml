@@ -17,5 +17,6 @@
     <string name="update">Update</string>
     <string name="remove">Remove</string>
     <string name="clear">Clear</string>
+    <string name="search">Search</string>
 
 </resources>
