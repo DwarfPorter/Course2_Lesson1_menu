@@ -3,6 +3,7 @@ package ru.geekbrains.menu.ui.home;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,8 +35,15 @@ public class HomeFragment extends Fragment implements IFragmentList {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         iniList(root);
         ((MainActivity)requireActivity()).setFragmentList(this);
+        setHasOptionsMenu(true);
         return root;
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.home_menu, menu);
+    }
+
 
     private void iniList(View root) {
         RecyclerView recyclerView = root.findViewById(R.id.recycler_list);
